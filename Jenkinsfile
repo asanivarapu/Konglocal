@@ -22,3 +22,4 @@ pipeline {
     dev = 'dev'
   }
 }
+}
