@@ -1,0 +1,46 @@
+{
+    "project_name": "KongInternal",
+    "instance_type": "noncsp",
+    "service_name": "DummyService",
+    "submitted_by": "asanivarapu",
+    "service_detail": {
+        "plugins": {
+            "name": [
+                "custom-jwt",
+                "acl"
+            ]
+        },
+        "routes": [
+            {
+                "paths": [
+                    "{{environment_prefix}}/v1/m0/api/office_locations"
+                ],
+                "methods": [
+                    "GET"
+                ],
+                "protocols": [
+                    "http",
+                    "https"
+                ]
+            },
+            {
+                "paths": [
+                    "{{environment_prefix}}/internal/v1/m0/api/office_locations"
+                ],
+                "methods": [
+                    "GET"
+                ],
+                "protocols": [
+                    "http",
+                    "https"
+                ]
+            }
+        ],
+        "upstream_url": "https://www.vmware.com/in/company/office_locations"
+    },
+    "tags": [
+        "test",
+        "internal"
+    ],
+    "jira_story": "kong-151"
+}

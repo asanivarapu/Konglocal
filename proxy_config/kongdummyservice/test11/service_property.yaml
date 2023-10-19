@@ -1,0 +1,10 @@
+default_info:
+  upstream_url: https://www.vmware.com/in/company/office_locations
+custom-jwt:
+  config: {}
+  enabled: 'true'
+acl:
+  config:
+    whitelist:
+    - internalAPI
+  enabled: 'true'
