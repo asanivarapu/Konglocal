@@ -7,6 +7,12 @@ pipeline {
       }
     }
 
+    stage('') {
+      steps {
+        git(url: 'https://github.com/asanivarapu/Konglocal.git', branch: 'main')
+      }
+    }
+
   }
   environment {
     dev = 'dev'
