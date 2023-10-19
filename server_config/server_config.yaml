@@ -1,0 +1,117 @@
+{
+  "kong_server": {
+    "newdevtkg": {
+      "host": "localhost",
+      "admin": {
+        "port": "8001",
+        "services_path": "/services",
+        "apis_path": "/apis",
+        "routes_path": "/routes",
+        "plugins_path": "/plugins",
+        "token_key": "Kong-Admin-Token",
+        "token_value": "newadmin123"
+      },
+      "service": {
+          "connect_timeout": 60000,
+          "retries": 5,
+          "read_timeout": 60000,
+          "write_timeout": 60000
+      },
+      "plugins": [
+		{
+		 "name": "request-transformer",
+		 "config": {
+                    },
+					"enabled": true
+		},
+		{
+		 "name": "response-transformer",
+		 "config": {
+                    },
+					"enabled": true
+		},
+		{
+          "name": "openid-connect",
+          "config": {
+			"verify_signature": false,
+			"verify_claims": false
+          },
+          "enabled": true
+        },
+        {
+          "name": "oauth-generator",
+          "config": {
+            "url": "http://kong-noncspoauth:8085/oauth/token"
+          },
+          "enabled": true
+        },
+        {
+          "name": "header-fusion",
+          "config": {
+            "MergeFlag": true
+          },
+          "enabled": true
+        },
+        {
+          "name": "customBasicAuth",
+          "config": {
+            "basicauth": "{{replacement_value}}"
+          },
+          "enabled": true
+        },
+	
+        {
+            "name": "cors",
+            "config": {
+                "credentials": false,
+                "preflight_continue": false
+            },
+            "enabled": true
+        },
+         {
+            "name": "acl",
+            "config": {
+            },
+            "enabled": true
+        },
+        {
+            "name": "api-signature-validation",
+            "config": {
+            },
+            "enabled": true
+        }
+        ,
+        {
+            "name": "api-filter",
+            "config": {
+            },
+            "enabled": true
+        } ,
+        {
+            "name": "slack-hmac",
+            "config": {
+              "hide_credentials": false
+            },
+            "enabled": true
+        },
+        {
+      "name": "jwt",
+      "config": {
+        "claims_to_verify": ["exp"],
+        "key_claim_name": "iss"
+      },
+      "enabled": true
+    },
+     {
+            "name": "custom-hmac-auth",
+            "config": {
+              "hide_credentials": true,
+              "clock_skew": 300
+            },
+            "enabled": true
+        }
+      ]
+    }
+  }
+}
+
