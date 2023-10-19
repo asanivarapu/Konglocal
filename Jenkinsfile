@@ -7,12 +7,16 @@ pipeline {
       }
     }
 
-    stage('') {
+   stage('version') {
       steps {
-        git(url: 'https://github.com/asanivarapu/Konglocal.git', branch: 'main')
+        sh 'python3 --version'
       }
     }
-
+    stage('hello') {
+      steps {
+        sh 'python3 main.py'
+      }
+    
   }
   environment {
     dev = 'dev'
